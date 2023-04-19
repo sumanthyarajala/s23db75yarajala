@@ -2,24 +2,15 @@ extends layout
 
 block content
   h1= title
-  p Welcome back to #{title} modifed by Dileep Sumanth Yarajala
-
-  - results = [{ eraser: "Jumbo", size: "large", cost: 300 },{ eraser: "Medium", size: "med", cost: 200 },{ eraser: "Jumbo", size: "Small", cost: 100 }];
-  div.container-fluid 
-    -
-    div.row 
-    -
-    each item, index in results
-        div.col-sm-6
-            h2= item.eraser
-            p= item.eraser_size 
-            p= "cost: $"+item.cost.toFixed(2)
-            div.row
-                each prop, i in Object.keys(item)
-                    div(col-sm-2,  onclick=`buy(${index})`)
-                        p #{Object.keys(item)[i]}: #{item[prop]}
-    script.
-        function buy (index){
-            alert (`You purchased item ${index+1}`)    
-        }
-        
+  -let eraser = results;
+  div(class="container_fluid")
+    each item,index in eraser
+        div(class="row" onclick=`buy(${index})`)       
+            div(class="col-sm-2") #{item.eraser}
+            div(class="col-sm-2") #{item.size}
+            div(class="col-sm-2") #{item.cost}
+  script.
+      function buy(indexnumber){
+        //indexnumber=indexnumber+1;
+        alert('You purchased item '+ indexnumber)
+      }

@@ -6,3 +6,12 @@ body {
 a {
   color: #00B7FF;
 }
+
+.eraserAttr {
+  background-color: rgb(168, 15, 33);
+  width: 120px;
+  padding: 10px 20px;
+  margin: 5px;
+  display: inline-block;
+  border: 5px solid rgb(19, 19, 19);
+  }

@@ -1,0 +1,25 @@
+extends layout
+
+block content
+  h1=title
+
+  if (toShow == null)
+   h2 No instance to delete
+  else
+   - let eraserid = toShow._id
+   - let eraser_type = toShow.eraser
+   - let erasercost = toShow.cost
+   - let erasersize = toShow.size
+  div
+    div.row
+     div(class='eraserAttr mr-3') eraser ID is:
+     div #{eraserid}
+    div.row
+     div(class='eraserAttr mr-3') eraser Type is:
+     div #{eraser_type}
+    div.row
+     div(class='eraserAttr mr-3') eraser Size is:
+     div #{erasersize}
+    div.row
+     div(class='eraserAttr mr-3') eraser Cost is:
+     div #{erasercost}
