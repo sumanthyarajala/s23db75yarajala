@@ -1,3 +1,30 @@
+//- extends layout
+
+//- block content
+//-   h1= title
+//-   p Welcome back to #{title} modifed by Hashwanth Gogineni
+
+//-   - results = [{ eraser: "Suv", size: "large", cost: 300 },{ eraser: "Sedan", size: "med", cost: 200 },{ eraser: "Hatchback", size: "small", cost: 100 }];
+//-   div.container-fluid 
+//-     -
+//-     div.row 
+//-     -
+//-     each item, index in results
+//-         div.col-sm-6
+//-             h2= item.eraser
+//-             p= item.eraser_size 
+//-             p= "cost: $"+item.cost.toFixed(2)
+//-             div.row
+//-                 each prop, i in Object.keys(item)
+//-                     div(col-sm-2,  onclick=`buy(${index})`)
+//-                         p #{Object.keys(item)[i]}: #{item[prop]}
+
+        
+//-     script.
+//-         function buy (index){
+//-             alert (`You purchased item ${index+1}`)    
+//-         }
+
 extends layout
 
 block content
@@ -5,12 +32,18 @@ block content
   -let eraser = results;
   div(class="container_fluid")
     each item,index in eraser
+      - let destination = `dispatch(\"/eraser/update?id=${item._id}\")`
         div(class="row" onclick=`buy(${index})`)       
             div(class="col-sm-2") #{item.eraser}
             div(class="col-sm-2") #{item.size}
             div(class="col-sm-2") #{item.cost}
+        button.btn( class="btn-primary ml-1", onclick= destination) Update
   script.
       function buy(indexnumber){
         //indexnumber=indexnumber+1;
         alert('You purchased item '+ indexnumber)
+      }
+  script.
+      function dispatch(path){
+      window.location.href=path
       }
